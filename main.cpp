@@ -67,7 +67,8 @@ template<typename T>
 list<T> invertir(list<T>lista)
 {
     list<T>respuesta;
-    return respuesta;
+    lista.reverse();
+    return lista;
 }
 
 ///////////////////////////////////////////////////////////////////

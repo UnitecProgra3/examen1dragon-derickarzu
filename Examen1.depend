@@ -95,3 +95,21 @@
 	<vector>
 	"Evaluador.h"
 
+1455815636 source:c:\users\derick arzu\documents\universidad\sistemas\4-programacion3\examen1dragon-derickarzu\evaluador.cpp
+	"Evaluador.h"
+
+1455815636 c:\users\derick arzu\documents\universidad\sistemas\4-programacion3\examen1dragon-derickarzu\evaluador.h
+	<iostream>
+	<fstream>
+	<math.h>
+	<list>
+	<vector>
+
+1455820738 source:c:\users\derick arzu\documents\universidad\sistemas\4-programacion3\examen1dragon-derickarzu\main.cpp
+	<iostream>
+	<fstream>
+	<math.h>
+	<list>
+	<vector>
+	"Evaluador.h"
+

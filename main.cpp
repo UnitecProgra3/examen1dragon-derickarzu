@@ -13,29 +13,44 @@ using namespace std;
 //Devuelve una direccion de memoria que apunte al apuntador "a"
 int** obtenerApuntador(int*a)
 {
-    return NULL;
+    return &a;
 }
 
 //Devuelve true si y solo si la primera letra de "cadena" es mayuscula
 bool esMayuscula(char*cadena)
 {
-    return false;
+    if((int)cadena[0] >64 && (int)cadena[0] < 90)
+        return true;
+    else
+        return false;
 }
 
 //Escribe el contendio del arreglo "valores" en el archivo con nombre "nombre_archivo" dado su tamano
 void escribir(string nombre_archivo,int* valores, int tamano)
 {
+    ofstream out (nombre_archivo.c_str());
+    for (int i=0; i<tamano;i++){
+        out<<valores[i]<<endl;
+        out.close();
+    }
 }
 
 //Lee y devuelve el contenido del archivo con nombre "nombre_archivo" tal y como fue escrito en la funcion "escribir()"
 int* leer(string nombre_archivo)
 {
+    int*num;
+    return num;
 }
 
 //Selecciona y devuelve unicamente los valores pares de "mi_vector"
 vector<int> seleccionarPares(vector<int>mi_vector)
 {
     vector<int>respuesta;
+    for(int i=0;i<mi_vector.size();i++){
+        if(mi_vector[i]%2==0){
+            respuesta.push_back(mi_vector[i]);
+        }
+    }
     return respuesta;
 }
 
@@ -43,6 +58,7 @@ vector<int> seleccionarPares(vector<int>mi_vector)
 //https://es.wikipedia.org/wiki/Sucesi%C3%B3n_matem%C3%A1tica#Sucesi.C3.B3n_creciente
 bool esSuccecionMonotona(vector<int>mi_vector)
 {
+
     return false;
 }
 
@@ -59,7 +75,56 @@ list<T> invertir(list<T>lista)
 ///////////////////////////////////////////////////////////////////
 
 //Realizar las siguientes clases dado el diagrama adjunto
+class Gato{
+public:
+    string nombre;
+    int edad;
+    string color;
 
+    Gato(){}
+    virtual string getTipo(){
+        return "Gato";
+    }
+
+    virtual string maullar()=0;
+    void operator+=(int ed){
+        edad+=ed;
+    }
+};
+
+class Siames : public Gato {
+public:
+    Siames(string nom, int ed, string col){
+    nombre = nom;
+    edad = ed;
+    color = col;
+    }
+
+    string getTipo(){
+        return "Siames";
+    }
+
+    string maullar(){
+        return "meow";
+    }
+};
+
+class Persa : public Gato {
+public:
+    Persa(string nom, int ed, string col){
+    nombre = nom;
+    edad = ed;
+    color = col;
+    }
+
+    string getTipo(){
+        return "Persa";
+    }
+
+    string maullar(){
+        return "miau";
+    }
+};
 //**Gato**
 //Constructor vacio: no hace nada
 //getTipo(): devuelve "Gato"
@@ -154,117 +219,117 @@ void evaluar2()
 {
     double nota = 0;
 
-//    cout<<"**Clase Siames**"<<endl;
-//    cout<<"Test constructor:\t\t";
-//    Siames clase1("roro",5,"azul");
-//    Siames clase2("lola",7,"rojo");
-//    Siames clase3("lolo",2,"verde");
-//
-//    if(clase1.nombre == "roro"
-//        && clase1.edad == 5
-//        && clase1.color == "azul"
-//        && clase2.nombre == "lola"
-//        && clase2.edad == 7
-//        && clase2.color == "rojo"
-//        && clase3.nombre == "lolo"
-//        && clase3.edad == 2
-//        && clase3.color == "verde"
-//        )
-//    {
-//        nota+=1;
-//        cout<<"Correcto"<<endl;
-//    }else
-//    {
-//        cout<<"Incorrecto"<<endl;
-//    }
-//
-//    cout<<"Test getTipo():\t\t\t";
-//
-//    if(clase1.getTipo() == "Siames"
-//        && clase2.getTipo() == "Siames"
-//        && clase3.getTipo() == "Siames"
-//        )
-//    {
-//        nota+=1;
-//        cout<<"Correcto"<<endl;
-//    }else
-//    {
-//        cout<<"Incorrecto"<<endl;
-//    }
-//
-//    cout<<"Test operator+=():\t\t";
-//    clase1+=5;
-//    clase2+=1;
-//    clase3+=2;
-//    if(clase1.edad==10
-//        && clase2.edad==8
-//        && clase3.edad==4
-//        )
-//    {
-//        nota+=1;
-//        cout<<"Correcto"<<endl;
-//    }else
-//    {
-//        cout<<"Incorrecto"<<endl;
-//    }
-//
-//
-//
-//
-//
-//    cout<<"**Clase Persa**"<<endl;
-//    cout<<"Test constructor:\t\t";
-//    Persa clase11("roro",5,"azul");
-//    Persa clase22("lola",7,"rojo");
-//    Persa clase33("lolo",2,"verde");
-//
-//    if(clase11.nombre == "roro"
-//        && clase11.edad == 5
-//        && clase11.color == "azul"
-//        && clase22.nombre == "lola"
-//        && clase22.edad == 7
-//        && clase22.color == "rojo"
-//        && clase33.nombre == "lolo"
-//        && clase33.edad == 2
-//        && clase33.color == "verde"
-//        )
-//    {
-//        nota+=1;
-//        cout<<"Correcto"<<endl;
-//    }else
-//    {
-//        cout<<"Incorrecto"<<endl;
-//    }
-//
-//    cout<<"Test getTipo():\t\t\t";
-//
-//    if(clase11.getTipo() == "Persa"
-//        && clase22.getTipo() == "Persa"
-//        && clase33.getTipo() == "Persa"
-//        )
-//    {
-//        nota+=1;
-//        cout<<"Correcto"<<endl;
-//    }else
-//    {
-//        cout<<"Incorrecto"<<endl;
-//    }
-//
-//    cout<<"Test operator+=():\t\t";
-//    clase11+=4;
-//    clase22+=2;
-//    clase33+=1;
-//    if(clase11.edad==9
-//        && clase22.edad==9
-//        && clase33.edad==3
-//        )
-//    {
-//        nota+=1;
-//        cout<<"Correcto"<<endl;
-//    }else
-//    {
-//        cout<<"Incorrecto"<<endl;
-//    }
+    cout<<"**Clase Siames**"<<endl;
+    cout<<"Test constructor:\t\t";
+    Siames clase1("roro",5,"azul");
+    Siames clase2("lola",7,"rojo");
+    Siames clase3("lolo",2,"verde");
+
+    if(clase1.nombre == "roro"
+        && clase1.edad == 5
+        && clase1.color == "azul"
+        && clase2.nombre == "lola"
+        && clase2.edad == 7
+        && clase2.color == "rojo"
+        && clase3.nombre == "lolo"
+        && clase3.edad == 2
+        && clase3.color == "verde"
+        )
+    {
+        nota+=1;
+        cout<<"Correcto"<<endl;
+    }else
+    {
+        cout<<"Incorrecto"<<endl;
+    }
+
+    cout<<"Test getTipo():\t\t\t";
+
+    if(clase1.getTipo() == "Siames"
+        && clase2.getTipo() == "Siames"
+        && clase3.getTipo() == "Siames"
+        )
+    {
+        nota+=1;
+        cout<<"Correcto"<<endl;
+    }else
+    {
+        cout<<"Incorrecto"<<endl;
+    }
+
+    cout<<"Test operator+=():\t\t";
+    clase1+=5;
+    clase2+=1;
+    clase3+=2;
+    if(clase1.edad==10
+        && clase2.edad==8
+        && clase3.edad==4
+        )
+    {
+        nota+=1;
+        cout<<"Correcto"<<endl;
+    }else
+    {
+        cout<<"Incorrecto"<<endl;
+    }
+
+
+
+
+
+    cout<<"**Clase Persa**"<<endl;
+    cout<<"Test constructor:\t\t";
+    Persa clase11("roro",5,"azul");
+    Persa clase22("lola",7,"rojo");
+    Persa clase33("lolo",2,"verde");
+
+    if(clase11.nombre == "roro"
+        && clase11.edad == 5
+        && clase11.color == "azul"
+        && clase22.nombre == "lola"
+        && clase22.edad == 7
+        && clase22.color == "rojo"
+        && clase33.nombre == "lolo"
+        && clase33.edad == 2
+        && clase33.color == "verde"
+        )
+    {
+        nota+=1;
+        cout<<"Correcto"<<endl;
+    }else
+    {
+        cout<<"Incorrecto"<<endl;
+    }
+
+    cout<<"Test getTipo():\t\t\t";
+
+    if(clase11.getTipo() == "Persa"
+        && clase22.getTipo() == "Persa"
+        && clase33.getTipo() == "Persa"
+        )
+    {
+        nota+=1;
+        cout<<"Correcto"<<endl;
+    }else
+    {
+        cout<<"Incorrecto"<<endl;
+    }
+
+    cout<<"Test operator+=():\t\t";
+    clase11+=4;
+    clase22+=2;
+    clase33+=1;
+    if(clase11.edad==9
+        && clase22.edad==9
+        && clase33.edad==3
+        )
+    {
+        nota+=1;
+        cout<<"Correcto"<<endl;
+    }else
+    {
+        cout<<"Incorrecto"<<endl;
+    }
 
 
     cout<<endl<<"Nota: "<<nota<<"/6"<<endl;
